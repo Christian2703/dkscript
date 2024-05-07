@@ -9,10 +9,9 @@ OrionLib:MakeNotification({
 	Time = 5
 })
 
-
+_G.RankUp = true
 _G.Teleport = true
 _G.AutoAtk = true
-        
 
 
         --funcao
@@ -31,6 +30,22 @@ _G.AutoAtk = true
             end
         end
 
+
+        function RankUp()
+            while _G.RankUp == true do
+                
+                local args = {
+                    [1] = {
+                        [1] = "Rank Up"
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage").Remotes.Server:FireServer(unpack(args))
+                wait(1.0)
+                
+            end
+        end
+
 --tab autofarmtab
 
 local autofarmtab = Window:MakeTab({
@@ -45,7 +60,16 @@ local Section = autofarmtab:AddSection({
 
 
 autofarmtab:AddToggle({
-    Name = "Auto attack",
+    Name = "Rank up",
+    Default = false,
+    Callback = function(Value)
+    _G.RankUp = Value
+    RankUp()
+    end
+})
+
+autofarmtab:AddToggle({
+    Name = "AutoAtk",
     Default = false,
     Callback = function(Value)
     _G.AutoAtk = Value
