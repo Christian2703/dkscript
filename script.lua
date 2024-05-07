@@ -12,7 +12,7 @@ OrionLib:MakeNotification({
 _G.RankUp = true
 _G.Teleport = true
 _G.AutoAtk = true
-
+_G.Trial = true
 
         --funcao
         function AutoAtk()
@@ -46,6 +46,24 @@ _G.AutoAtk = true
             end
         end
 
+
+        function Trial()
+            while _G.Trial == true do
+                local args = {
+                    [1] = {
+                        [1] = "ChangeZone",
+                        [2] = "Trial Lobby"
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):FireServer(unpack(args))
+                wait(1.0)
+            end
+            
+        end
+
+
+
 --tab autofarmtab
 
 local autofarmtab = Window:MakeTab({
@@ -78,6 +96,20 @@ autofarmtab:AddToggle({
 })
 
 
+autofarmtab:AddButton({
+	Name = "trial",
+	Callback = function()
+        local args = {
+            [1] = {
+                [1] = "ChangeZone",
+                [2] = "Trial Lobby"
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):FireServer(unpack(args))
+        wait(1.0)
+  	end    
+})
 
         --Teleport WORLDS
         local TeleportTab = Window:MakeTab({
