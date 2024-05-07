@@ -95,22 +95,6 @@ autofarmtab:AddToggle({
     end
 })
 
-
-autofarmtab:AddButton({
-	Name = "trial",
-	Callback = function()
-        local args = {
-            [1] = {
-                [1] = "ChangeZone",
-                [2] = "Trial Lobby"
-            }
-        }
-        
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):FireServer(unpack(args))
-        wait(1.0)
-  	end    
-})
-
         --Teleport WORLDS
         local TeleportTab = Window:MakeTab({
             Name = "Teleport ",
@@ -131,6 +115,21 @@ autofarmtab:AddButton({
                 local part = game.Workspace.Client.Maps["Demon Slayer"].SpawnPoint
                 player.HumanoidRootPart.CFrame = part.CFrame
                 wait(.5)
+              end    
+        })
+
+        TeleportTab:AddButton({
+            Name = "trial",
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = "ChangeZone",
+                        [2] = "Trial Lobby"
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):FireServer(unpack(args))
+                wait(1.0)
               end    
         })
 
