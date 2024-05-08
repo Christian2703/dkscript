@@ -776,7 +776,7 @@ local toggleTeleportLoopButton3 = autofarmtab:AddToggle({
 
 
 
-local toggleTeleportLoopButton1 = autofarmtab:AddToggle({
+--local toggleTeleportLoopButton1 = autofarmtab:AddToggle({
     Name = "Test trial",
     Title = "Ativar Loop de Teleport (M01-M07)",
     Description = "Ativa ou desativa o loop de teleport para M01-M07",
