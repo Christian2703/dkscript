@@ -775,32 +775,6 @@ local toggleTeleportLoopButton3 = autofarmtab:AddToggle({
 })
 
 
-
---local toggleTeleportLoopButton1 = autofarmtab:AddToggle({
-    Name = "Test trial",
-    Title = "Ativar Loop de Teleport (M01-M07)",
-    Description = "Ativa ou desativa o loop de teleport para M01-M07",
-    Callback = function(isEnabled)
-        isTeleportLoopEnabled = isEnabled
-        if isTeleportLoopEnabled then
-            -- Iniciar o loop de teleport para M01-M07
-            teleportLoop({
-                game.Workspace.Client.Maps["Demon Slayer"].Mobs.M01.Head,
-                game.Workspace.Client.Maps["Demon Slayer"].Mobs.M02.Head,
-                game.Workspace.Client.Maps["Demon Slayer"].Mobs.M03.Head,
-                game.Workspace.Client.Maps["Demon Slayer"].Mobs.M04.Head,
-                game.Workspace.Client.Maps["Demon Slayer"].Mobs.M05.Head,
-                game.Workspace.Client.Maps["Demon Slayer"].Mobs.M06.Head,
-                game.Workspace.Client.Maps["Demon Slayer"].Mobs.M07.Head
-            })
-        end
-    end
-})
-
-
-
-
-
 local args = {
     [1] = {
         [1] = "BuyTier",
