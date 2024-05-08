@@ -9,10 +9,16 @@ OrionLib:MakeNotification({
 	Time = 5
 })
 
+
+function Teleport(teLeportPlace)
+    local player = game.players.localPlayer
+    player.character.HumanoidRootPart.CFrame = teLeportPlace
+end
+
+
 _G.RankUp = true
 _G.Teleport = true
 _G.AutoAtk = true
-_G.Trial = true
 
         --funcao
         function AutoAtk()
@@ -44,22 +50,6 @@ _G.Trial = true
                 wait(1.0)
                 
             end
-        end
-
-
-        function Trial()
-            while _G.Trial == true do
-                local args = {
-                    [1] = {
-                        [1] = "ChangeZone",
-                        [2] = "Trial Lobby"
-                    }
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):FireServer(unpack(args))
-                wait(1.0)
-            end
-            
         end
 
 
@@ -132,6 +122,65 @@ autofarmtab:AddToggle({
                 wait(1.0)
               end    
         })
+
+
+        --Teleport WORLDS
+        local MiscTab = Window:MakeTab({
+            Name = "Misc",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+
+
+        local Section = MiscTab:AddSection({
+            Name = "Misc"
+        })
+
+
+
+        MiscTab:AddButton({
+            Name = "MARKS",
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = "SpinMark"
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):FireServer(unpack(args))
+                wait(1.0)
+              end    
+        })
+
+        MiscTab:AddButton({
+            Name = "EnterTrial",
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = "CheckInTrial"
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):FireServer(unpack(args))
+                wait(1.0)
+              end    
+        })
+
+
+
+        MiscTab:AddButton({
+            Name = "shiny",
+            Callback = function()
+            local player = game.Players.LocalPlayer.Character
+            local part = game.workspace.Client.Maps["Dragon Ball"].Interact.Shiny
+            player.HumanoidRootPart.CFrame = part.CFrame
+            wait(.5)
+        end    
+        })
+        --local part = game.Workspace.Client.Maps["Demon Slayer"].SpawnPoint
+
+        --local part = game.workspace.Client.Maps["Dragon Ball"].interact.Shiny
+
 
 
 
